@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Bulubulu ❤️</title>
+
+<style>
+
+@font-face{
+    font-family:"Ruthligos";
+    src:url("Ruthligos.ttf");
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:linear-gradient(180deg,#ffeef6,#fff8fb);
+overflow:hidden;
+font-family:"Ruthligos",cursive;
+}
+
+/* ===== LAYER ===== */
+
+.page{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:1s;
+}
+
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:translateX(-100%);
+}
+
+/* ===== CARD ===== */
+
+.card{
+
+width:90%;
+max-width:360px;
+
+padding:25px;
+
+background:rgba(255,255,255,.85);
+
+border-radius:25px;
+
+backdrop-filter:blur(8px);
+
+box-shadow:0 10px 40px rgba(255,105,180,.2);
+
+text-align:center;
+
+position:relative;
+
+z-index:10;
+
+}
+
+.photo{
+
+width:240px;
+
+height:330px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+border:6px solid white;
+
+box-shadow:0 8px 25px rgba(0,0,0,.15);
+
+}
+
+.title{
+
+margin-top:15px;
+
+font-size:18px;
+
+color:#000;
+
+}
+
+button{
+
+margin-top:20px;
+
+padding:12px 35px;
+
+border:none;
+
+border-radius:50px;
+
+background:#ff7bac;
+
+font-family:"Ruthligos";
+
+font-size:18px;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+background:#ff5c99;
+
+}
+
+/* ===== LAYER 2 ===== */
+
+.message-card{
+
+width:90%;
+
+max-width:380px;
+
+background:white;
+
+padding:30px;
+
+border-radius:25px;
+
+box-shadow:0 10px 35px rgba(255,105,180,.25);
+
+position:relative;
+
+z-index:10;
+
+text-align:center;
+
+}
+
+.message{
+
+font-size:18px;
+
+line-height:2;
+
+color:#000;
+
+}
+
+.heart{
+
+font-size:30px;
+
+margin-bottom:15px;
+
+}
+
+.corner{
+
+position:absolute;
+
+font-size:30px;
+
+}
+
+.c1{
+top:10px;
+left:10px;
+}
+
+.c2{
+top:10px;
+right:10px;
+}
+
+.c3{
+bottom:10px;
+left:10px;
+}
+
+.c4{
+bottom:10px;
+right:10px;
+}
+
+/* ===== BUNGA ===== */
+
+.flower{
+
+position:fixed;
+
+top:-40px;
+
+font-size:28px;
+
+pointer-events:none;
+
+z-index:1;
+
+animation:fall linear forwards;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:translateY(-40px) rotate(0deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(110vh) rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- LAYER 1 -->
+
+<div class="page" id="page1">
+
+<div class="card">
+
+<img src="1001434358.jpg" class="photo">
+
+<div class="title">
+
+for bulubulu
+
+</div>
+
+<button onclick="nextPage()">
+
+Open ❤️
+
+</button>
+
+</div>
+
+</div>
+
+<!-- LAYER 2 -->
+
+<div class="page hidden" id="page2">
+
+<div class="message-card">
+
+<div class="corner c1">🌸</div>
+
+<div class="corner c2">🌸</div>
+
+<div class="corner c3">🌸</div>
+
+<div class="corner c4">🌸</div>
+
+<div class="heart">💗</div>
+
+<div class="message">
+
+Good mowninggg 💕
+
+<br><br>
+
+gimana bobo nya semalem?
+
+<br><br>
+
+semoga hari ini kamu bangun dengan perasaan yang lebih ringan dari kemarin.
+
+<br><br>
+
+jangan lupa sarapan sebelum mulai aktivitas ya,
+
+biar nda kecapean.
+
+<br><br>
+
+semangat buat hari inii ❤️
+
+<br><br>
+
+have a nice day yaaa 🌸
+
+</div>
+
+</div>
+
+</div><script>
+
+// ===============================
+// Tombol Open
+// ===============================
+
+function nextPage(){
+
+const page1 = document.getElementById("page1");
+const page2 = document.getElementById("page2");
+
+page1.style.opacity="0";
+page1.style.transform="translateX(-100%)";
+
+setTimeout(function(){
+
+page1.classList.add("hidden");
+
+page2.classList.remove("hidden");
+
+page2.style.opacity="1";
+page2.style.transform="translateX(0)";
+
+},700);
+
+}
+
+// ===============================
+// Animasi bunga
+// ===============================
+
+const flowers=["🌸","🌺","🌷","🌹","💮","🌼"];
+
+function createFlower(){
+
+const flower=document.createElement("div");
+
+flower.className="flower";
+
+flower.innerHTML=flowers[Math.floor(Math.random()*flowers.length)];
+
+flower.style.left=Math.random()*100+"vw";
+
+flower.style.animationDuration=(6+Math.random()*5)+"s";
+
+flower.style.fontSize=(20+Math.random()*20)+"px";
+
+flower.style.opacity=Math.random();
+
+document.body.appendChild(flower);
+
+setTimeout(function(){
+
+flower.remove();
+
+},12000);
+
+}
+
+setInterval(createFlower,300);
+
+// ===============================
+// Bunga awal
+// ===============================
+
+for(let i=0;i<15;i++){
+
+setTimeout(createFlower,i*200);
+
+}
+
+// ===============================
+// Efek muncul halaman kedua
+// ===============================
+
+document.getElementById("page2").style.opacity="0";
+
+document.getElementById("page2").style.transform="translateX(100%)";
+
+</script>
+
+</body>
+</html>
